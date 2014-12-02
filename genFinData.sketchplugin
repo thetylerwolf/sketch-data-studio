@@ -1,0 +1,68 @@
+
+var input = [doc askForUserInput:"Generate how many [rows,cols]?" initialValue:""];
+
+input = input.split(',');
+
+var choice = showSelect();
+
+var rows = parseInt(input[0]),
+    cols = parseInt(input[1]),
+    group = doc.currentPage().artboards()[choice].addLayerOfType('group');
+
+group.setName('columns');
+
+for(i=cols; i>0; i--) {
+    var textLayer = group.addLayerOfType('text');
+    genColumns(rows, textLayer, i);
+}
+
+function genColumns(numCols, layer, index) {
+    var result = [];
+
+    for(var i = numCols; i>0; i--) {
+        var rand = Math.random();
+        rand = rand.toFixed(2).toString();
+        result.push(rand);
+    }
+
+    resultStr = result.join('\n');
+    layer.setStringValue(resultStr);
+    layer.adjustFrameToFit();
+    placeColumn(layer, index);
+}
+
+function placeColumn(col, index) {
+    col.frame().setX(index * 100);
+}
+
+function isText(layer) {
+    return layer.isMemberOfClass(MSTextLayer);
+}
+
+function createSelect(msg, items, selectedItemIndex){
+  selectedItemIndex = selectedItemIndex || 0
+
+  var accessory = [[NSComboBox alloc] initWithFrame:NSMakeRect(0,0,200,25)]
+  [accessory addItemsWithObjectValues:items]
+  [accessory selectItemAtIndex:selectedItemIndex]
+
+  var alert = [[NSAlert alloc] init]
+  [alert setMessageText:msg]
+  [alert addButtonWithTitle:'OK']
+  [alert setAccessoryView:accessory]
+
+  var responseCode = [alert runModal]
+  var sel = [accessory indexOfSelectedItem]
+
+  return [responseCode, sel]
+}
+
+function showSelect() {
+    var dropdownOptions = [];
+    var loop = doc.currentPage().artboards().objectEnumerator();
+    while (item = loop.nextObject()) {
+        dropdownOptions.push(item.name());
+    }
+
+    return createSelect('Choose an artboard',dropdownOptions, 1)[1];
+}
