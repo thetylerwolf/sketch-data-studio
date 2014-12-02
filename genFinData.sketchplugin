@@ -3,13 +3,22 @@ var input = [doc askForUserInput:"Generate how many [rows,cols]?" initialValue:"
 
 input = input.split(',');
 
-var choice = showSelect();
+var firstChoices, group;
 
-var rows = parseInt(input[0]),
-    cols = parseInt(input[1]),
-    group = doc.currentPage().artboards()[choice].addLayerOfType('group');
+//If we're using artboards, prompt for which to add to
+if(doc.currentPage().artboards().length > 0) {
+  firstChoices = doc.currentPage().artboards();
+  var choice = showSelect('Choose an artboard', firstChoices);
+  group = doc.currentPage().artboards()[choice].addLayerOfType('group');
+} else {
+  group = doc.currentPage().addLayerOfType('group');
+}
 
 group.setName('columns');
+
+var rows = parseInt(input[0]),
+    cols = parseInt(input[1])
+    ;
 
 for(i=cols; i>0; i--) {
     var textLayer = group.addLayerOfType('text');
@@ -57,12 +66,12 @@ function createSelect(msg, items, selectedItemIndex){
   return [responseCode, sel]
 }
 
-function showSelect() {
+function showSelect(dialog, items) {
     var dropdownOptions = [];
-    var loop = doc.currentPage().artboards().objectEnumerator();
+    var loop = items.objectEnumerator();
     while (item = loop.nextObject()) {
         dropdownOptions.push(item.name());
     }
 
-    return createSelect('Choose an artboard',dropdownOptions, 1)[1];
+    return createSelect(dialog,dropdownOptions, 1)[1];
 }
