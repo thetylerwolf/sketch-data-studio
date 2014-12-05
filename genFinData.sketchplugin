@@ -6,7 +6,7 @@ input = input.split(',');
 var firstChoices, group;
 
 //If we're using artboards, prompt for which to add to
-if(doc.currentPage().artboards().length > 0) {
+if(doc.currentPage().artboards().length() > 0) {
   firstChoices = doc.currentPage().artboards();
   var choice = showSelect('Choose an artboard', firstChoices);
   group = doc.currentPage().artboards()[choice].addLayerOfType('group');
