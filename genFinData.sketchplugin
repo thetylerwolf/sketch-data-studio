@@ -1,7 +1,17 @@
+#import './functions/inputs.js'
+#import './globals/dataTypes.js'
+#import './globals/names.js'
 
-var input = [doc askForUserInput:"Generate how many [rows,cols]?" initialValue:""];
+var input = askForInput('Generate how many [rows,cols]?');
 
 input = input.split(',');
+
+if(input.length <= 1) {
+  input.push('');
+}
+
+var dt = showSelect('Choose data type', dataNames);
+dt = dataKeys[dt];
 
 var firstChoices, group;
 
@@ -16,62 +26,32 @@ if(doc.currentPage().artboards().length() > 0) {
 
 group.setName('columns');
 
-var rows = parseInt(input[0]),
-    cols = parseInt(input[1])
-    ;
+var rows = parseInt(input[0]) || 1;
+var cols = parseInt(input[1]) || 1;
 
 for(i=cols; i>0; i--) {
     var textLayer = group.addLayerOfType('text');
-    genColumns(rows, textLayer, i);
+    genRows(rows, textLayer, i, dt);
 }
 
-function genColumns(numCols, layer, index) {
+function genRows(numCols, layer, index, dt) {
     var result = [];
 
     for(var i = numCols; i>0; i--) {
-        var rand = Math.random();
-        rand = rand.toFixed(2).toString();
-        result.push(rand);
+        var num = dataTypes[dt].val();
+        result.push(num);
     }
 
     resultStr = result.join('\n');
     layer.setStringValue(resultStr);
     layer.adjustFrameToFit();
-    placeColumn(layer, index);
+    placeLayer(layer, index);
 }
 
-function placeColumn(col, index) {
-    col.frame().setX(index * 100);
+function placeLayer(layer, index) {
+    layer.frame().setX(index * 100);
 }
 
 function isText(layer) {
     return layer.isMemberOfClass(MSTextLayer);
-}
-
-function createSelect(msg, items, selectedItemIndex){
-  selectedItemIndex = selectedItemIndex || 0
-
-  var accessory = [[NSComboBox alloc] initWithFrame:NSMakeRect(0,0,200,25)]
-  [accessory addItemsWithObjectValues:items]
-  [accessory selectItemAtIndex:selectedItemIndex]
-
-  var alert = [[NSAlert alloc] init]
-  [alert setMessageText:msg]
-  [alert addButtonWithTitle:'OK']
-  [alert setAccessoryView:accessory]
-
-  var responseCode = [alert runModal]
-  var sel = [accessory indexOfSelectedItem]
-
-  return [responseCode, sel]
-}
-
-function showSelect(dialog, items) {
-    var dropdownOptions = [];
-    var loop = items.objectEnumerator();
-    while (item = loop.nextObject()) {
-        dropdownOptions.push(item.name());
-    }
-
-    return createSelect(dialog,dropdownOptions, 1)[1];
 }
