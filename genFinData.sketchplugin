@@ -1,6 +1,6 @@
 #import './functions/inputs.js'
-#import './globals/dataTypes.js'
 #import './globals/names.js'
+#import './globals/dataTypes.js'
 
 var input = askForInput('Generate how many [rows,cols]?');
 

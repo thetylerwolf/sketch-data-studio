@@ -1,6 +1,6 @@
 var dataTypes = {
     zeroToOne : {
-        name: '0 - 1 Random',
+        name: 'Random 0 - 1',
         val: function() {
             var rand = Math.random();
             rand = rand.toFixed(2).toString();
@@ -8,11 +8,19 @@ var dataTypes = {
         }
     },
     zeroToHundred : {
-        name: '0 - 100 Random',
+        name: 'Random 0 - 100',
         val: function() {
             var rand = Math.random() * 100;
             rand = rand.toFixed(2).toString();
             return rand;
+        }
+    },
+    stock : {
+        name: 'Random Stocks',
+        val: function() {
+            var rand = Math.random() * stockNames.length;
+            rand = Math.ceil(rand);
+            return stockNames[rand-1];
         }
     }
 };
