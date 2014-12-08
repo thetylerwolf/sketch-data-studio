@@ -16,7 +16,7 @@ A random floating point number from 0 - 1
 A random floating point number from 0 - 100
 
 #####*Set your own random values*
-Input a comma-seperated list of values that will be picked at random for each row. This can be used to select random integers (1,2,3,4...).\
+Input a comma-seperated list of values that will be picked at random for each row. This can be used to select random integers (1,2,3,4...)
 
 #####*Random Stocks*
 Stock names randomly chosen from a list of stocks that were found on the internet.
