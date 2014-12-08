@@ -9,22 +9,22 @@ A Sketch plugin to generate financial dummy data for data tables. Data is for mo
 3. Third dialogue - select the artboard to add the data to
 
 ##Data Types
-*Random 0 - 1*
+####*Random 0 - 1*
 A random floating point number from 0 - 1
 
-*Random 0 - 100*
+####*Random 0 - 100*
 A random floating point number from 0 - 100
 
-*Set your own random values*
+####*Set your own random values*
 Input a comma-seperated list of values that will be picked at random for each row. This can be used to select random integers (1,2,3,4...).\
 
-*Random Stocks*
+#####*Random Stocks*
 Stock names randomly chosen from a list of stocks that were found on the internet.
 
-*Random Bonds*
+####*Random Bonds*
 Bond names randomly chosen from a list of stocks that were found on the internet, then a random number between 1 and 10 is chosen and concatenated with the letters "YR" (e.g. 1YR, 4YR, etc.)
 
-*Random Stock Symbols*
+####*Random Stock Symbols*
 Stock ticker symbols randomly chosen from a list of stocks that were found on the internet.
 
 ##Disclaimer
