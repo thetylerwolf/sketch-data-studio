@@ -1,8 +1,14 @@
 #import './functions/inputs.js'
 #import './globals/names.js'
+#import './globals/symbols.js'
 #import './globals/dataTypes.js'
 
-var input = askForInput('Generate how many [rows,cols]?');
+var input, dt, values,
+    firstChoices, group, rows,
+    cols, textLayer;
+
+//First input
+input = askForInput('Generate how many [rows,cols]?');
 
 input = input.split(',');
 
@@ -10,12 +16,20 @@ if(input.length <= 1) {
   input.push('');
 }
 
-var dt = showSelect('Choose data type', dataNames);
+rows = parseInt(input[0]) || 1;
+cols = parseInt(input[1]) || 1;
+
+//Second input
+dt = showSelect('Choose data type', dataNames);
 dt = dataKeys[dt];
 
-var firstChoices, group;
+if(dt == 'arbitrary') {
+  values = askForInput('Type a comma-seperated list of values to choose from.');
+  values = values.split(',');
+  values = values.map(function(d) { return d.trim(); });
+}
 
-//If we're using artboards, prompt for which to add to
+//If we're using artboards, prompt for which to add to (3rd input)
 if(doc.currentPage().artboards().length() > 0) {
   firstChoices = doc.currentPage().artboards();
   var choice = showSelect('Choose an artboard', firstChoices);
@@ -26,19 +40,17 @@ if(doc.currentPage().artboards().length() > 0) {
 
 group.setName('columns');
 
-var rows = parseInt(input[0]) || 1;
-var cols = parseInt(input[1]) || 1;
-
 for(i=cols; i>0; i--) {
-    var textLayer = group.addLayerOfType('text');
+    textLayer = group.addLayerOfType('text');
     genRows(rows, textLayer, i, dt);
 }
 
 function genRows(numCols, layer, index, dt) {
-    var result = [];
+    var result = [],
+        num;
 
     for(var i = numCols; i>0; i--) {
-        var num = dataTypes[dt].val();
+        num = dataTypes[dt].val(index, values);
         result.push(num);
     }
 

@@ -15,6 +15,15 @@ var dataTypes = {
             return rand;
         }
     },
+    arbitrary : {
+        name: 'Set your own random values',
+        val: function(index, values) {
+            var pickNum = values.length;
+            var rand = Math.random() * values.length;
+            rand = Math.floor(rand);
+            return values[rand];
+        }
+    },
     stock : {
         name: 'Random Stocks',
         val: function() {
@@ -22,7 +31,25 @@ var dataTypes = {
             rand = Math.ceil(rand);
             return stockNames[rand-1];
         }
-    }
+    },
+    bond : {
+        name: 'Random Bonds',
+        val: function() {
+            var rand = Math.random() * stockNames.length;
+            rand = Math.ceil(rand);
+            var years = Math.random() * 10;
+            years = Math.ceil(years);
+            return stockNames[rand-1] + ' ' + years + 'YR';
+        }
+    },
+    symbol : {
+        name: 'Random Stock Symbols',
+        val: function() {
+            var rand = Math.random() * stockSymbols.length;
+            rand = Math.ceil(rand);
+            return stockSymbols[rand-1];
+        }
+    },
 };
 
 var dataKeys = Object.keys(dataTypes);
