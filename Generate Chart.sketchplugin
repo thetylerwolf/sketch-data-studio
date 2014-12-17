@@ -1,0 +1,79 @@
+#import './functions/inputs.js'
+#import './globals/chartTypes.js'
+
+var input, dt, values,
+    firstChoices, group, points,
+    seriez, seriesLayer, seriesArray;
+
+//First input
+input = askForInput('Generate how many [points,series]?');
+
+input = input.split(',');
+
+if(input.length <= 1) {
+  input.push('');
+}
+//row = point, col = series
+points = parseInt(input[0]) || 1;
+seriez = parseInt(input[1]) || 1;
+
+dt = showSelect('Choose data type', dataNames);
+dt = dataKeys[dt];
+
+//If we're using artboards, prompt for which to add to (3rd input)
+if(doc.currentPage().artboards().length() > 0) {
+  firstChoices = doc.currentPage().artboards();
+  var choice = showSelect('Choose an artboard', firstChoices);
+  group = doc.currentPage().artboards()[choice];
+} else {
+  group = doc.currentPage();
+}
+
+for(i=seriez; i>0; i--) {
+    seriesArray = genSeries(points, i, dt);
+    makePath(seriesArray);
+    // layer.adjustFrameToFit();
+    // placeLayer(layer, index);
+}
+
+function genSeries(numSeries, index, dt) {
+    var result = [],
+        num;
+
+    for(var i = numSeries; i>0; i--) {
+        num = chartTypes[dt].val(index, values);
+        result.push(num);
+    }
+
+    return result;
+}
+
+function makePath(pointsArray) {
+    var path = NSBezierPath.bezierPath();
+    //initialize path
+    var firstP = pointsArray[0];
+    path.moveToPoint(NSMakePoint(0,firstP));
+    //get rid of first point in series
+    pointsArray.shift();
+
+    pointsArray.forEach(function(d,i) {
+      var x = (i + 1) * 10;
+      path.lineToPoint(NSMakePoint(x,d));
+    });
+
+    var shape = MSShapeGroup.shapeWithBezierPath(path);
+    var border = shape.style().borders().addNewStylePart();
+
+    border.color = MSColor.colorWithSVGString("#3E6B9E");
+    border.thickness = 2;
+
+    group.addLayers([shape]);
+}
+
+function placeLayer(layer, index) {
+    layer.frame().setX(0);
+}
+
+function isText(layer) {
+    return layer.isMemberOfClass(MSTextLayer);
+}

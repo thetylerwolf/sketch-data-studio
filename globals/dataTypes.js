@@ -49,7 +49,7 @@ var dataTypes = {
             rand = Math.ceil(rand);
             return stockSymbols[rand-1];
         }
-    },
+    }
 };
 
 var dataKeys = Object.keys(dataTypes);
