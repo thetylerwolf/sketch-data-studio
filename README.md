@@ -3,6 +3,9 @@ sketchFinDataGen
 
 A Sketch plugin to generate financial dummy data for data tables. Data is for mock-up/demo purposes only. Updated frequently.
 
+##What's new?
+#WE HAVE CHARTS!
+
 ##How to use
 1. First dialogue - enter number of columns, followed by number of rows (comma seperated)
 2. Second dialogue - select data type to generate
@@ -31,7 +34,7 @@ Stock ticker symbols randomly chosen from a list of stocks that were found on th
 All data generated is completely random and is not useful for any sort of financial planning. Data is for mock-up/demo purposes only.
 
 ##Coming soon
--Select types of number streams that roughly follow an equation
+-More charts (bar, scatter, taking suggestions)
 
 ##Bug reporting
 Please include your OS X version as well as your Sketch version in any bug reports.
