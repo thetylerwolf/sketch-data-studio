@@ -45,6 +45,8 @@ function genSeries(numSeries, index, dt) {
         result.push(num);
     }
 
+    chartTypes[dt].reset();
+
     return result;
 }
 
@@ -68,6 +70,26 @@ function makePath(pointsArray) {
     border.thickness = 2;
 
     group.addLayers([shape]);
+}
+
+function makeBars() {
+    valueArray = [10,50,99];
+    valueArray.forEach(makeRect);
+}
+
+function makeRect(valueArray) {
+        var rect = doc.currentPage().addLayerOfType('rectangle');
+        rect = rect.embedInShapeGroup();
+        rect.frame().x = 0;
+        rect.frame().y = 0;
+        rect.frame().width = 20;
+        rect.frame().height = 53;
+        rect.setName('bar');
+        var rectFill = rect.style().fills().addNewStylePart();
+        rectFill.color = MSColor.colorWithSVGString("#3E6B9E");
+
+        doc.currentPage().addLayers([shapeGroup]);
+
 }
 
 function placeLayer(layer, index) {

@@ -3,7 +3,11 @@ var chartTypes = {
         name: 'Geometric Time Series',
         val: function() {
             //Brownian time series for realism
+<<<<<<< Updated upstream
             var direction = this.direction || Math.random() * 3 + -8;
+=======
+            var direction = this.direction || Math.random() * 3 + -8
+>>>>>>> Stashed changes
             var prev = this.prev || Math.random() * 100;
             var rand = Math.random() * 10 + direction;
             var mean = 5;
@@ -15,6 +19,12 @@ var chartTypes = {
 
             return this.prev.toFixed(2);
         },
+<<<<<<< Updated upstream
+=======
+        reset: function() {
+            this.prev = undefined;
+        },
+>>>>>>> Stashed changes
         chartable: true
     }
 };
