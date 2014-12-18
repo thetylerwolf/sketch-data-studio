@@ -31,7 +31,7 @@ if(doc.currentPage().artboards().length() > 0) {
 
 for(i=seriez; i>0; i--) {
     seriesArray = genSeries(points, i, dt);
-    generateChart(seriesArray);
+    generateChart(seriesArray,i);
 }
 
 function genSeries(numSeries, index, dt) {
@@ -46,8 +46,8 @@ function genSeries(numSeries, index, dt) {
     return result;
 }
 
-function generateChart(sArray) {
-    chartTypes[dt].generate(sArray);
+function generateChart(sArray,i) {
+    chartTypes[dt].generate(sArray,i);
 }
 
 function isText(layer) {
