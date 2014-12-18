@@ -46,29 +46,25 @@ var chartTypes = {
     barSeries : {
         name: 'Bar Chart (Random 1 - 100)',
         val: function() {
-            return Math.random() * 100 + 1;
+            var rand = Math.random() * 100 + 1;
+            return rand.toFixed(2);
         },
         chartable: true,
-        generate: function(va) {
+        generate: function(va,index) {
+            var base = 120 * (index + 1);
 
-            return makeBars(va);
-
-            function makeBars(valueArray) {
-                valueArray.forEach(makeRect);
-            }
-
-            function makeRect(d,i) {
+            va.forEach(function(d,i) {
                 var rect = doc.currentPage().addLayerOfType('rectangle');
                 rect = rect.embedInShapeGroup();
                 rect.frame().x = i * 30;
-                rect.frame().y = 100-d;
+                rect.frame().y = base-d;
                 rect.frame().width = 20;
                 rect.frame().height = d;
                 rect.setName('bar');
                 var rectFill = rect.style().fills().addNewStylePart();
                 rectFill.color = MSColor.colorWithSVGString("#3E6B9E");
 
-            }
+            });
         }
     }
 };
