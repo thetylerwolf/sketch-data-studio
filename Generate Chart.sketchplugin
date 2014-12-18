@@ -31,9 +31,7 @@ if(doc.currentPage().artboards().length() > 0) {
 
 for(i=seriez; i>0; i--) {
     seriesArray = genSeries(points, i, dt);
-    makePath(seriesArray);
-    // layer.adjustFrameToFit();
-    // placeLayer(layer, index);
+    generateChart(seriesArray);
 }
 
 function genSeries(numSeries, index, dt) {
@@ -45,55 +43,11 @@ function genSeries(numSeries, index, dt) {
         result.push(num);
     }
 
-    chartTypes[dt].reset();
-
     return result;
 }
 
-function makePath(pointsArray) {
-    var path = NSBezierPath.bezierPath();
-    //initialize path
-    var firstP = pointsArray[0];
-    path.moveToPoint(NSMakePoint(0,firstP));
-    //get rid of first point in series
-    pointsArray.shift();
-
-    pointsArray.forEach(function(d,i) {
-      var x = (i + 1) * 10;
-      path.lineToPoint(NSMakePoint(x,d));
-    });
-
-    var shape = MSShapeGroup.shapeWithBezierPath(path);
-    var border = shape.style().borders().addNewStylePart();
-
-    border.color = MSColor.colorWithSVGString("#3E6B9E");
-    border.thickness = 2;
-
-    group.addLayers([shape]);
-}
-
-function makeBars() {
-    valueArray = [10,50,99];
-    valueArray.forEach(makeRect);
-}
-
-function makeRect(valueArray) {
-        var rect = doc.currentPage().addLayerOfType('rectangle');
-        rect = rect.embedInShapeGroup();
-        rect.frame().x = 0;
-        rect.frame().y = 0;
-        rect.frame().width = 20;
-        rect.frame().height = 53;
-        rect.setName('bar');
-        var rectFill = rect.style().fills().addNewStylePart();
-        rectFill.color = MSColor.colorWithSVGString("#3E6B9E");
-
-        doc.currentPage().addLayers([shapeGroup]);
-
-}
-
-function placeLayer(layer, index) {
-    layer.frame().setX(0);
+function generateChart(sArray) {
+    chartTypes[dt].generate(sArray);
 }
 
 function isText(layer) {
