@@ -5,6 +5,7 @@ A Sketch plugin to generate financial dummy data for data tables. Data is for mo
 
 ##What's new?
 #WE HAVE CHARTS!
+##Update -  Bar Charts (beta)
 
 ##How to use
 1. First dialogue - enter number of columns, followed by number of rows (comma seperated)
