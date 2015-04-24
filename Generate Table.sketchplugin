@@ -1,7 +1,7 @@
-#import './functions/inputs.js'
-#import './globals/names.js'
-#import './globals/symbols.js'
-#import './globals/dataTypes.js'
+@import './functions/inputs.js'
+@import './globals/names.js'
+@import './globals/symbols.js'
+@import './globals/dataTypes.js'
 
 var input, dt, values,
     firstChoices, group, rows,
@@ -30,7 +30,7 @@ if(dt == 'arbitrary') {
 }
 
 //If we're using artboards, prompt for which to add to (3rd input)
-if(doc.currentPage().artboards().length() > 0) {
+if(doc.currentPage().artboards().count() > 0) {
   firstChoices = doc.currentPage().artboards();
   var choice = showSelect('Choose an artboard', firstChoices);
   group = doc.currentPage().artboards()[choice].addLayerOfType('group');
