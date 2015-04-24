@@ -19,7 +19,7 @@ var chartTypes = {
             this.prev = undefined;
         },
         chartable: true,
-        generate: function(pointsArray) {
+        generate: function(pointsArray, index, group) {
             var path = NSBezierPath.bezierPath();
             //initialize path
             var firstP = pointsArray[0];
@@ -44,18 +44,24 @@ var chartTypes = {
         }
     },
     barSeries : {
-        name: 'Bar Chart (Random 1 - 100)',
+        name: '[BETA] Bar Chart (Random 1 - 100)',
         val: function() {
             var rand = Math.random() * 100 + 1;
             return rand.toFixed(2);
         },
         chartable: true,
-        generate: function(va,index) {
+        generate: function(va,index, group) {
             var base = 120 * (index + 1);
 
             va.forEach(function(d,i) {
-                var rect = doc.currentPage().addLayerOfType('rectangle');
-                rect = rect.embedInShapeGroup();
+                var rect = group.addLayerOfType('rectangle');
+
+                if ( rect.embedInShapeGroup != undefined ) {
+                  rect.embedInShapeGroup();
+                } else if ( MSShapeGroup.shapeWithPath != undefined ) {
+                  MSShapeGroup.shapeWithPath(rect);
+                }
+
                 rect.frame().x = i * 30;
                 rect.frame().y = base-d;
                 rect.frame().width = 20;
@@ -64,6 +70,7 @@ var chartTypes = {
                 var rectFill = rect.style().fills().addNewStylePart();
                 rectFill.color = MSColor.colorWithSVGString("#3E6B9E");
 
+                doc.currentPage().selectLayers([rect]);
             });
         }
     }

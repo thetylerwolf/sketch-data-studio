@@ -1,5 +1,5 @@
-#import './functions/inputs.js'
-#import './globals/chartTypes.js'
+@import './functions/inputs.js'
+@import './globals/chartTypes.js'
 
 var input, dt, values,
     firstChoices, group, points,
@@ -21,17 +21,19 @@ dt = showSelect('Choose data type', dataNames);
 dt = dataKeys[dt];
 
 //If we're using artboards, prompt for which to add to (3rd input)
-if(doc.currentPage().artboards().length() > 0) {
+if(doc.currentPage().artboards().count() > 0) {
   firstChoices = doc.currentPage().artboards();
   var choice = showSelect('Choose an artboard', firstChoices);
-  group = doc.currentPage().artboards()[choice];
+  group = doc.currentPage().artboards()[choice].addLayerOfType('group');
 } else {
-  group = doc.currentPage();
+  group = doc.currentPage().addLayerOfType('group');
 }
+
+group.setName('series');
 
 for(i=seriez; i>0; i--) {
     seriesArray = genSeries(points, i, dt);
-    generateChart(seriesArray,i);
+    generateChart(seriesArray,i,group);
 }
 
 function genSeries(numSeries, index, dt) {
@@ -46,8 +48,8 @@ function genSeries(numSeries, index, dt) {
     return result;
 }
 
-function generateChart(sArray,i) {
-    chartTypes[dt].generate(sArray,i);
+function generateChart(sArray,i, group) {
+    chartTypes[dt].generate(sArray,i,group);
 }
 
 function isText(layer) {
