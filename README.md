@@ -39,3 +39,5 @@ All data generated is completely random and is not useful for any sort of financ
 
 ##Bug reporting
 Please include your OS X version as well as your Sketch version in any bug reports.
+
+Made by [Tyler Wolf](http://www.tylernwolf.com)
