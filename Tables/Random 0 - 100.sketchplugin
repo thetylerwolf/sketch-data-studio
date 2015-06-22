@@ -1,0 +1,3 @@
+var dt = 'zeroToHundred';
+
+@import '../controllers/genTable.js'

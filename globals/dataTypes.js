@@ -51,8 +51,3 @@ var dataTypes = {
         }
     }
 };
-
-var dataKeys = Object.keys(dataTypes);
-var dataNames = dataKeys.map(function(d) {
-    return dataTypes[d].name;
-});

@@ -1,0 +1,3 @@
+var dt = "timeSeries"
+
+@import '../controllers/genChart.js'

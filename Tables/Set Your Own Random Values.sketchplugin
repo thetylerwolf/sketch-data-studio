@@ -1,0 +1,7 @@
+var dt = 'arbitrary';
+
+values = askForInput('Type a comma-seperated list of values to choose from (ex. [a, b, c])');
+values = values.split(',');
+values = values.map(function(d) { return d.trim(); });
+
+@import '../controllers/genTable.js'
