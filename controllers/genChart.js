@@ -1,12 +1,12 @@
-@import './functions/inputs.js'
-@import './globals/chartTypes.js'
+@import '../functions/inputs.js'
+@import '../globals/chartTypes.js'
 
-var input, dt, values,
+var input, values,
     firstChoices, group, points,
     seriez, seriesLayer, seriesArray;
 
 //First input
-input = askForInput('Generate how many [points,series]?');
+input = askForInput('Generate how many [ points, number of charts ]?');
 
 input = input.split(',');
 
@@ -17,23 +17,21 @@ if(input.length <= 1) {
 points = parseInt(input[0]) || 1;
 seriez = parseInt(input[1]) || 1;
 
-dt = showSelect('Choose data type', dataNames);
-dt = dataKeys[dt];
-
-//If we're using artboards, prompt for which to add to (3rd input)
+//If we're using artboards, add to the current artboard
 if(doc.currentPage().artboards().count() > 0) {
-  firstChoices = doc.currentPage().artboards();
-  var choice = showSelect('Choose an artboard', firstChoices);
-  group = doc.currentPage().artboards()[choice].addLayerOfType('group');
+  var currentArtboard = doc.currentPage().currentArtboard();
+  group = currentArtboard.addLayerOfType('group');
 } else {
   group = doc.currentPage().addLayerOfType('group');
 }
 
-group.setName('series');
+group.setName('chart');
 
 for(i=seriez; i>0; i--) {
+    var newGroup = group.addLayerOfType('group');
+    newGroup.setName('series');
     seriesArray = genSeries(points, i, dt);
-    generateChart(seriesArray,i,group);
+    generateChart(seriesArray,i,newGroup);
 }
 
 function genSeries(numSeries, index, dt) {

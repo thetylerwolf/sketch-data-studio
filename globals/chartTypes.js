@@ -1,3 +1,5 @@
+@import '../globals/chartColors.js'
+
 var chartTypes = {
     timeSeries : {
         name: 'Line Chart (Geometric Time Series)',
@@ -35,7 +37,9 @@ var chartTypes = {
             var shape = MSShapeGroup.shapeWithBezierPath(path);
             var border = shape.style().borders().addNewStylePart();
 
-            border.color = MSColor.colorWithSVGString("#3E6B9E");
+            var idx = index % chartColors.length
+            var iColor = chartColors[idx];
+            border.color = MSColor.colorWithSVGString(iColor);
             border.thickness = 2;
 
             group.addLayers([shape]);
@@ -68,15 +72,13 @@ var chartTypes = {
                 rect.frame().height = d;
                 rect.setName('bar');
                 var rectFill = rect.style().fills().addNewStylePart();
-                rectFill.color = MSColor.colorWithSVGString("#3E6B9E");
+
+                var idx = index % chartColors.length
+                var iColor = chartColors[idx];
+                rectFill.color = MSColor.colorWithSVGString(iColor);
 
                 doc.currentPage().selectLayers([rect]);
             });
         }
     }
 };
-
-var dataKeys = Object.keys(chartTypes);
-var dataNames = dataKeys.map(function(d) {
-    return chartTypes[d].name;
-});

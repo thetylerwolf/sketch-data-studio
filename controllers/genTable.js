@@ -1,14 +1,14 @@
-@import './functions/inputs.js'
-@import './globals/names.js'
-@import './globals/symbols.js'
-@import './globals/dataTypes.js'
+@import '../functions/inputs.js'
+@import '../globals/names.js'
+@import '../globals/symbols.js'
+@import '../globals/dataTypes.js'
 
-var input, dt, values,
+var input, values,
     firstChoices, group, rows,
     cols, textLayer;
 
 //First input
-input = askForInput('Generate how many [rows,cols]?');
+input = askForInput('Generate how many [ rows, columns ]?');
 
 input = input.split(',');
 
@@ -19,21 +19,10 @@ if(input.length <= 1) {
 rows = parseInt(input[0]) || 1;
 cols = parseInt(input[1]) || 1;
 
-//Second input
-dt = showSelect('Choose data type', dataNames);
-dt = dataKeys[dt];
-
-if(dt == 'arbitrary') {
-  values = askForInput('Type a comma-seperated list of values to choose from.');
-  values = values.split(',');
-  values = values.map(function(d) { return d.trim(); });
-}
-
-//If we're using artboards, prompt for which to add to (3rd input)
+//If we're using artboards, add to the current artboard
 if(doc.currentPage().artboards().count() > 0) {
-  firstChoices = doc.currentPage().artboards();
-  var choice = showSelect('Choose an artboard', firstChoices);
-  group = doc.currentPage().artboards()[choice].addLayerOfType('group');
+  var currentArtboard = doc.currentPage().currentArtboard();
+  group = currentArtboard.addLayerOfType('group');
 } else {
   group = doc.currentPage().addLayerOfType('group');
 }
