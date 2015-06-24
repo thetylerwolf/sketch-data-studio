@@ -3,14 +3,14 @@ sketchFinDataGen
 
 A Sketch plugin to generate financial dummy data for data tables. Data is for mock-up/demo purposes only. Updated frequently.
 
+![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
+
 ##What's new?
 ####Update - Bar Chart operation has been cleaned up, but is still in Beta.
 Bar charts are not working 100% correctly. This seems to be an issue with how Sketch places rectangles through the CocoaScript API. If you have any insight into how to resolve this, please contact me directly or create an issue. In the mean time, I'll be waiting for the next Sketch update.
 
 ##How to use
-1. First dialogue - enter number of columns, followed by number of rows (comma seperated)
-2. Second dialogue - select data type to generate
-3. Third dialogue - select the artboard to add the data to
+Enter number of columns, followed by number of rows or number of charts (comma seperated) and you're done.
 
 ##Data Types
 #####*Random 0 - 1*
