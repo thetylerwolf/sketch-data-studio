@@ -7,18 +7,23 @@ var input, values,
     firstChoices, group, rows,
     cols, textLayer;
 
-//First input
-input = askForInput('Generate how many [ rows, columns ]?');
+if(dt === 'fromCSV') {
+    values = importFromCSV();
+    if(values == false) return;
+} else {
+    //First input
+    input = askForInput('Generate how many [ rows, columns ]?');
 
-input = input.split(',');
+    input = input.split(',');
 
-if(input.length <= 1) {
-  input.push('');
+    if(input.length <= 1) {
+      input.push('');
+    }
+
+    rows = parseInt(input[0]) || 1;
+    cols = parseInt(input[1]) || 1;
+
 }
-
-rows = parseInt(input[0]) || 1;
-cols = parseInt(input[1]) || 1;
-
 //If we're using artboards, add to the current artboard
 if(doc.currentPage().artboards().count() > 0) {
   var currentArtboard = doc.currentPage().currentArtboard();
@@ -29,10 +34,26 @@ if(doc.currentPage().artboards().count() > 0) {
 
 group.setName('columns');
 
-for(i=cols; i>0; i--) {
-    textLayer = group.addLayerOfType('text');
-    genRows(rows, textLayer, i, dt);
+if(dt !== 'fromCSV') {
+
+    for(i=cols; i>0; i--) {
+        textLayer = group.addLayerOfType('text');
+        genRows(rows, textLayer, i, dt);
+    }
+
+} else {
+
+    for(i=0; i<cols; i++) {
+        textLayer = group.addLayerOfType('text');
+        resultStr = values[i].join('\n');
+        textLayer.setStringValue(resultStr);
+        textLayer.adjustFrameToFit();
+        placeLayer(textLayer, i);
+    }
+
 }
+
+return;
 
 function genRows(numCols, layer, index, dt) {
     var result = [],
@@ -55,4 +76,20 @@ function placeLayer(layer, index) {
 
 function isText(layer) {
     return layer.isMemberOfClass(MSTextLayer);
+}
+
+function importFromCSV() {
+    var path = dataTypes[dt].prompt();
+    if(!path) return false;
+
+    //get root dir
+    // var rootDir = [path stringByDeletingLastPathComponent];
+    // if(!Sandbox.authoriseDir(rootDir)) return;
+
+    var contents = dataTypes[dt].load(path);
+
+    var data = dataTypes[dt].transform(contents);
+    cols = data.length;
+
+    return data;
 }
