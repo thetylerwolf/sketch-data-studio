@@ -13,6 +13,7 @@ if(dt === 'fromCSV') {
 } else {
     //First input
     input = askForInput('Generate how many [ rows, columns ]?');
+    if(!input) return;
 
     input = input.split(',');
 

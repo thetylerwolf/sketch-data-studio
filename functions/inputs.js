@@ -26,7 +26,6 @@ function showSelect(dialog, items) {
     if(items.length > 0) {
       dropdownOptions = items;
     } else {
-      log(items)
       var loop = [items objectEnumerator];
       while (item = loop.nextObject()) {
           dropdownOptions.push(item.name());

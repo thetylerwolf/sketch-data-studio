@@ -52,9 +52,6 @@ var dataTypes = {
     },
     fromCSV : {
         name: 'Generate from CSV',
-        val: function() {
-            
-        },
         prompt: function() {
             var panel = [NSOpenPanel openPanel];
 
@@ -88,7 +85,11 @@ var dataTypes = {
 
             data = data.map(function(d) { return d.split(','); });
 
-            data = data[0].map(function(d,i) { return data.map(function(j) { return j[i]; }); });
+            data = data[0].map(function(d,i) {
+                return data.map(function(j) {
+                    return j[i];
+                });
+            });
 
             return data;
         }
