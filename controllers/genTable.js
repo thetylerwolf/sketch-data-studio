@@ -73,6 +73,7 @@ function genRows(numCols, layer, index, dt) {
 
 function placeLayer(layer, index) {
     layer.frame().setX(index * 100);
+    refreshTextLayer(layer);
 }
 
 function isText(layer) {
@@ -93,4 +94,13 @@ function importFromCSV() {
     cols = data.length;
 
     return data;
+}
+
+// Taken from Sketch Data Populator - Thanks!
+// https://github.com/preciousforever/sketch-data-populator
+function refreshTextLayer(layer) {
+    [layer select: true byExpandingSelection: false];
+    [layer setIsEditingText: true];
+    [layer setIsEditingText: false];
+    [layer select: false byExpandingSelection: false];
 }
