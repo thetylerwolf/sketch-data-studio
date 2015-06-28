@@ -9,11 +9,11 @@ A Sketch plugin to upload or generate numerical and qualitative data for charts 
 
 ##What's new?
 ####Update - 6/28/15 - Lots of updates
-*Added CSV upload capability (charts and tables)
-*Renamed the plugin to Sketch Data Studio
-*Improved user experience on input menus
-*Group sizing is now fixed, so groups will contain the entirety of generated items
-*Bar charts now work correctly
+* Added CSV upload capability (tables only)
+* Renamed the plugin to Sketch Data Studio
+* Improved user experience on input menus
+* Group sizing is now fixed, so groups will contain the entirety of generated items
+* Bar charts now work correctly
 
 ##How to use
 Enter number of columns, followed by number of rows or number of charts (comma seperated) and you're done.
