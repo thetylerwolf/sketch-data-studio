@@ -66,6 +66,9 @@ var dataTypes = {
             [panel setShowsHiddenFiles: false];
             [panel setExtensionHidden: false];
 
+            var fileTypes = ['csv', 'CSV'];
+            [panel setAllowedFileTypes:fileTypes];
+
             [panel setDirectoryURL: [NSURL fileURLWithPath: '/Users/' + NSUserName()]];
 
             var pressedButton = [panel runModal];

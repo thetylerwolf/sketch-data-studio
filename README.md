@@ -1,13 +1,23 @@
-sketchFinDataGen
-================
+Sketch Data Studio
+==================
 
-A Sketch plugin to generate financial dummy data for data tables. Data is for mock-up/demo purposes only. Updated frequently.
+****(Formerly Sketch Financial Data Generator [SketchFinDataGen])
+
+A Sketch plugin to upload or generate numerical and qualitative data for charts and tables. Ideal for those working on big data interfaces or for data scientists who want charts that look better than those produced by spreadsheet software. Updated frequently.
+
+****Please donate!
+I develop this plugin in my free time, meaning its development is not paid for by anyone. Your donations not only help me pay the rent, but also encourage me to keep working to make this plugin better! Donating is through paypal and is only a 2-click process.
+https://pledgie.com/campaigns/29599
 
 ![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
 
 ##What's new?
-####Update - Bar Chart operation has been cleaned up, but is still in Beta.
-Bar charts are not working 100% correctly. This seems to be an issue with how Sketch places rectangles through the CocoaScript API. If you have any insight into how to resolve this, please contact me directly or create an issue. In the mean time, I'll be waiting for the next Sketch update.
+####Update - 6/28/15 - Lots of updates
+-Added CSV upload capability (charts and tables)
+-Renamed the plugin to Sketch Data Studio
+-Improved user experience on input menus
+-Group sizing is now fixed, so groups will contain the entirety of generated items
+-Bar charts now work correctly
 
 ##How to use
 Enter number of columns, followed by number of rows or number of charts (comma seperated) and you're done.
@@ -31,13 +41,25 @@ Bond names randomly chosen from a list of stocks that were found on the internet
 #####*Random Stock Symbols*
 Stock ticker symbols randomly chosen from a list of stocks that were found on the internet.
 
-##Disclaimer
-All data generated is completely random and is not useful for any sort of financial planning. Data is for mock-up/demo purposes only.
+##*CSV Import*
+Save a spreadsheet in .csv format and import it through the dialogue. Only files with a .csv or .CSV extension will be import-able.
 
-##Coming soon
--More charts (scatter, taking suggestions)
+####*Tables*
+Any data should work.
+
+####*Charts*
+Non-numerical data may produce undesirable results. Percentages with percent signs are fine. Numbers are trimmed to 2 sig-figs.
+
+##Upcoming changes
+-Update plugin package structure (not visible to user)
+-Code refactor (not visible to user)
+-Scatter charts
+- ??? - Suggest new feature ideas in the "Issues" section
 
 ##Bug reporting
 Please include your OS X version as well as your Sketch version in any bug reports.
+
+##Disclaimer
+All data labeled "Random" is completely random and is not useful for any sort of financial planning. Data is for mock-up/demo purposes only.
 
 Made by [Tyler Wolf](http://www.tylernwolf.com)
