@@ -7,7 +7,7 @@ var input, values,
     firstChoices, group, rows,
     cols, textLayer;
 
-if(dt === 'fromCSV') {
+if(dt == 'fromCSV') {
     values = importFromCSV();
     if(values == false) return;
 } else {
