@@ -1,36 +1,57 @@
-function askForInput(prompt) {
-  return [doc askForUserInput:prompt initialValue:""];
-}
+function askForInput(title, type) {
+  var alert = [COSAlertWindow new];
+        [alert setMessageText: title];
 
-function createSelect(msg, items, selectedItemIndex){
-  selectedItemIndex = selectedItemIndex || 0;
+  var optionsView = [[NSView alloc] initWithFrame: NSMakeRect(0, 0, 300, 85)];
+  [alert addAccessoryView: optionsView];
 
-  var accessory = [[NSComboBox alloc] initWithFrame:NSMakeRect(0,0,200,25)]
-  [accessory addItemsWithObjectValues:items]
-  [accessory selectItemAtIndex:selectedItemIndex]
+  var numItemsText = 'Number of ' + (type == 'charts' ? 'charts' : 'columns');
+  var numLabel = addLabel(numItemsText, NSMakeRect(0, 65, 200, 20));
+  [optionsView addSubview: numLabel];
 
-  var alert = [[NSAlert alloc] init]
-  [alert setMessageText:msg]
-  [alert addButtonWithTitle:'OK']
-  [alert setAccessoryView:accessory]
+  var numInput = addInput(1, NSMakeRect(130, 65, 50, 20));
+  [optionsView addSubview: numInput]
 
-  var responseCode = [alert runModal]
-  var sel = [accessory indexOfSelectedItem]
+  var numPointsText = 'Number of ' + (type == 'charts' ? 'points' : 'rows');
+  var pointsLabel = addLabel(numPointsText, NSMakeRect(0, 35, 200, 20));
+  [optionsView addSubview: pointsLabel];
 
-  return [responseCode, sel]
-}
+  var pointsInput = addInput(10, NSMakeRect(130, 35, 50, 20));
+  [optionsView addSubview: pointsInput]
 
-function showSelect(dialog, items) {
-    var dropdownOptions = [];
+  //add bottom buttons
+  [alert addButtonWithTitle:"Generate"];
+  [alert addButtonWithTitle:"Cancel"];
+  
+  var input = [alert runModal];
 
-    if(items.length > 0) {
-      dropdownOptions = items;
-    } else {
-      var loop = [items objectEnumerator];
-      while (item = loop.nextObject()) {
-          dropdownOptions.push(item.name());
-      }
-    }
+  return {
+    items: numInput,
+    points: pointsInput,
+    result: input
+  }
 
-    return createSelect(dialog,dropdownOptions, 0)[1];
+  function addLabel(optionValue, frame) {
+
+    var label = [[NSTextField alloc] initWithFrame: frame];
+    [label setStringValue: optionValue];
+    [label setBezeled:false];
+    [label setDrawsBackground:false];
+    [label setEditable:false];
+    [label setSelectable:false];
+
+    return label;
+  }
+
+  function addInput(defaultValue, frame) {
+
+    var input = [[NSTextField alloc] initWithFrame: frame];
+    [input setStringValue: defaultValue];
+    [input setBezeled:true];
+    [input setDrawsBackground:true];
+    [input setEditable:true];
+    [input setSelectable:true];
+
+    return input;
+  }
 }

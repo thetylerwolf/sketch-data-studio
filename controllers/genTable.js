@@ -12,17 +12,11 @@ if(dt == 'fromCSV') {
     if(values == false) return;
 } else {
     //First input
-    input = askForInput('Generate how many [ rows, columns ]?');
-    if(!input) return;
+    input = askForInput(dataTypes[dt].name, 'tables');
+    if(input.result == 1001) return;
 
-    input = input.split(',');
-
-    if(input.length <= 1) {
-      input.push('');
-    }
-
-    rows = parseInt(input[0]) || 1;
-    cols = parseInt(input[1]) || 1;
+    rows = Math.abs(input.points.intValue()) || 1;
+    cols = Math.abs(input.items.intValue()) || 1;
 
 }
 //If we're using artboards, add to the current artboard
