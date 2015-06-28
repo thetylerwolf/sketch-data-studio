@@ -5,15 +5,11 @@ Sketch Data Studio
 
 A Sketch plugin to upload or generate numerical and qualitative data for charts and tables. Ideal for those working on big data interfaces or for data scientists who want charts that look better than those produced by spreadsheet software. Updated frequently.
 
-####Please donate!
-I develop this plugin in my free time, meaning its development is not paid for by anyone. Your donations not only help me pay the rent, but also encourage me to keep working to make this plugin better! Donating is through paypal and is only a 2-click process.
-https://pledgie.com/campaigns/29599
-
 ![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
 
 ##What's new?
 ####Update - 6/28/15 - Lots of updates
--Added CSV upload capability (charts and tables)
+-Added CSV upload capability (tables only)
 -Renamed the plugin to Sketch Data Studio
 -Improved user experience on input menus
 -Group sizing is now fixed, so groups will contain the entirety of generated items
@@ -46,9 +42,6 @@ Save a spreadsheet in .csv format and import it through the dialogue. Only files
 
 ####*Tables*
 Any data should work.
-
-####*Charts*
-Non-numerical data may produce undesirable results. Percentages with percent signs are fine. Numbers are trimmed to 2 sig-figs.
 
 ##Upcoming changes
 -Update plugin package structure (not visible to user)
