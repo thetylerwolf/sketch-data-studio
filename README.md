@@ -5,7 +5,9 @@ Sketch Data Studio
 
 A Sketch plugin to upload or generate numerical and qualitative data for charts and tables. Ideal for those working on big data interfaces or for data scientists who want charts that look better than those produced by spreadsheet software. Updated frequently.
 
-####New! Go Premium - Premium version enables generating Bar Charts and Line Charts from imported CSV data - a huge timesaver - [Get Premium](http://www.wolflux.com)
+####New! Go Premium - Premium version enables generating Bar Charts and Line Charts from imported CSV data - a huge timesaver - 
+[Go Premium!](http://www.tylernwolf.com/#/datastudio)
+
 
 ![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
 
