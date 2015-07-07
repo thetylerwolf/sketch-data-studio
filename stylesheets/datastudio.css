@@ -1,0 +1,41 @@
+html, body {
+    background-color:#0ABE78;
+    color:#fff;
+}
+
+body {
+    padding-top:50px;
+}
+
+.roboto-font {
+    font-family: "Roboto", "Open Sans";
+}
+
+.faded {
+    opacity:0.9;
+}
+
+.btn {
+    background-image:none;
+}
+
+.btn-free {
+    background-color:transparent;
+    color:#fff;
+    border-color:#fff;
+}
+
+.btn-free:hover {
+    background-color:#fff;
+    color:#0ABE78;
+}
+
+.btn-premium {
+    background-image:none;
+    transition:background-color 0.3s;
+}
+
+.detail-row {
+    margin-top:20%;
+    margin-bottom:20%;
+}
