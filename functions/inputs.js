@@ -1,4 +1,4 @@
-function askForInput(title, type) {
+function askForInput(title, type, dt) {
   var alert = [COSAlertWindow new];
         [alert setMessageText: title];
 
@@ -10,26 +10,38 @@ function askForInput(title, type) {
   [optionsView addSubview: numLabel];
 
   var numInput = addInput(1, NSMakeRect(130, 65, 50, 20));
-  [optionsView addSubview: numInput]
+  [optionsView addSubview: numInput];
 
   var numPointsText = 'Number of ' + (type == 'charts' ? 'points' : 'rows');
   var pointsLabel = addLabel(numPointsText, NSMakeRect(0, 35, 200, 20));
   [optionsView addSubview: pointsLabel];
 
   var pointsInput = addInput(10, NSMakeRect(130, 35, 50, 20));
-  [optionsView addSubview: pointsInput]
+  [optionsView addSubview: pointsInput];
 
-  //add bottom buttons
+  // add bottom buttons
   [alert addButtonWithTitle:"Generate"];
   [alert addButtonWithTitle:"Cancel"];
+
+  var arbitraryInput;
+
+  if(dt == 'arbitrary') {
+    var arbitraryText = 'Arbitrary values\n(comma seperated)';
+    var arbitraryLabel = addLabel(arbitraryText, NSMakeRect(0,-9, 150, 40));
+    [optionsView addSubview: arbitraryLabel];
+
+    arbitraryInput = addInput('', NSMakeRect(130,5,150,20));
+    [optionsView addSubview: arbitraryInput];
+  }
   
   var input = [alert runModal];
 
   return {
     items: numInput,
     points: pointsInput,
+    arb: arbitraryInput,
     result: input
-  }
+  };
 
   function addLabel(optionValue, frame) {
 

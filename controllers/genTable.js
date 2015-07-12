@@ -1,7 +1,7 @@
-@import '../functions/inputs.js'
-@import '../globals/names.js'
-@import '../globals/symbols.js'
-@import '../globals/dataTypes.js'
+@import '../functions/inputs.js';
+@import '../globals/names.js';
+@import '../globals/symbols.js';
+@import '../globals/dataTypes.js';
 
 var input, values,
     firstChoices, group, rows,
@@ -12,11 +12,17 @@ if(dt == 'fromCSV') {
     if(values == false) return;
 } else {
     //First input
-    input = askForInput(dataTypes[dt].name, 'tables');
+    input = askForInput(dataTypes[dt].name, 'tables', dt);
     if(input.result == 1001) return;
 
     rows = Math.abs(input.points.intValue()) || 1;
     cols = Math.abs(input.items.intValue()) || 1;
+
+    if(dt == 'arbitrary') {
+        var arbValues = input.arb.stringValue()
+        arbValues = arbValues.split(',');
+        values = arbValues.map(function(d) { return d.trim(); });
+    }
 
 }
 //If we're using artboards, add to the current artboard
