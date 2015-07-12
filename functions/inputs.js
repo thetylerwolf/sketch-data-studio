@@ -25,9 +25,10 @@ function askForInput(title, type, dt) {
 
   var arbitraryInput;
 
+  log(dt);
   if(dt == 'arbitrary') {
-    var arbitraryText = 'Arbitrary values\n(comma seperated)';
-    var arbitraryLabel = addLabel(arbitraryText, NSMakeRect(0,-9, 150, 40));
+    var arbitraryText = 'Arbitrary values';
+    var arbitraryLabel = addLabel(arbitraryText, NSMakeRect(0,5, 150, 20));
     [optionsView addSubview: arbitraryLabel];
 
     arbitraryInput = addInput('', NSMakeRect(130,5,150,20));
