@@ -1,3 +1,0 @@
-var dt = 'stock';
-
-@import '../controllers/genTable.js'

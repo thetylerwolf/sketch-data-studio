@@ -1,3 +1,0 @@
-var dt = 'bond';
-
-@import '../controllers/genTable.js'

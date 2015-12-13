@@ -1,3 +1,0 @@
-var dt = 'symbol';
-
-@import '../controllers/genTable.js'

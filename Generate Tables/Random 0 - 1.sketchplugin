@@ -1,3 +1,0 @@
-var dt = 'zeroToOne';
-
-@import '../controllers/genTable.js'

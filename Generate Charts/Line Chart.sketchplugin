@@ -1,3 +1,0 @@
-var dt = "lineSeries"
-
-@import '../controllers/genChart.js'
