@@ -84,9 +84,19 @@ var dataTypes = {
             return contents;
         },
         transform: function(content) {
-            var data = content.split('\r');
+            content = content.replace(/\n\r/g,'\n');
+            content = content.replace(/\r\n/g,'\n');
+            content = content.replace(/\r/g,'\n');
+            var data = content.split('\n');
 
-            data = data.map(function(d) { return d.split(','); });
+            // data = data.map(function(d) { return d.split(','); });
+
+            data = data.map(function(d) {
+                var exp = new RegExp('["|""]','g');
+                var string = d.replace(exp,',');
+                string = string.split(',');
+                return string;
+            });
 
             data = data[0].map(function(d,i) {
                 return data.map(function(j) {
