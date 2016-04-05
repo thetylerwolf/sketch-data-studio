@@ -1,22 +1,12 @@
 Sketch Data Studio
 ==================
 
-####(Formerly Sketch Financial Data Generator [SketchFinDataGen])
-
 A Sketch plugin to upload or generate numerical and qualitative data for charts and tables. Ideal for those working on big data interfaces or for data scientists who want charts that look better than those produced by spreadsheet software. Updated frequently.
 
-####New! Go Premium - Premium version enables generating Bar Charts and Line Charts from imported CSV data - a huge timesaver -
+####Go Premium - Premium version enables generating Charts from imported CSV data, as well as more chart types to choose from.
 ###[Go Premium!](http://thetylerwolf.github.io/sketch-data-studio)
 
 ![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
-
-##What's new?
-####Update - 6/28/15 - Lots of updates
-* Added CSV upload capability (tables only)
-* Renamed the plugin to Sketch Data Studio
-* Improved user experience on input menus
-* Group sizing is now fixed, so groups will contain the entirety of generated items
-* Bar charts now work correctly
 
 ##How to use
 Enter number of columns, followed by number of rows or number of charts (comma seperated) and you're done.
@@ -46,11 +36,12 @@ Save a spreadsheet in .csv format and import it through the dialogue. Only files
 ####*Tables*
 Any data should work.
 
-##Upcoming changes
--Update plugin package structure (not visible to user)
--Code refactor (not visible to user)
--Scatter charts
-- ??? - Suggest new feature ideas in the "Issues" section
+####*FAQ*
+Q: My imported CSV data comes in with a weird format/I get an error when uploading CSV!
+A: Make sure your file is correctly formatted (utf-8). If you're not sure what that means, try the following:
+Upload your CSV file to Google Docs
+Download the file as a CSV
+Try with the newly downloaded file
 
 ##Bug reporting
 Please include your OS X version as well as your Sketch version in any bug reports.
