@@ -1,0 +1,31 @@
+{
+  "name": "totop.js",
+  "version": "0.0.4",
+  "homepage": "https://github.com/dstroot/totop.js",
+  "authors": [
+    "Dan Stroot <dan.stroot@gmail.com>"
+  ],
+  "description": "Scroll your page to the top",
+  "keywords": [
+    "scroll",
+    "top"
+  ],
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dstroot/my_blog"
+  },
+  "licenses": [
+    {
+        "type": "MIT"
+      , "url": "http://choosealicense.com/licenses/mit/"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-jshint": "0.8.x",
+    "grunt-contrib-uglify": "0.2.x",
+    "load-grunt-tasks": "0.2.x"
+  }
+}

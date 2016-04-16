@@ -1,0 +1,980 @@
+// Bring in bootstrap
+// --------------------------------------------------
+@import "./js/vendor/bootstrap/less/bootstrap.less";
+
+// Change the base font to Open Sans
+// --------------------------------------------------
+@font-family-sans-serif:  "Open Sans", Helvetica, Arial, sans-serif;
+
+// Colors
+// --------------------------------------------------
+
+// Basic idea is that "objects" should not have intrinsic color
+// but that color should be added via a class.  However if an object
+// is *always* the same color then you can use the less mixins
+// ==============================================
+// Bad:
+// ==============================================
+// .jumbotron {
+//   padding: 30px;
+//   margin-bottom: 30px;
+//   color: #ffffff;            // should be @white
+//   background-color: #4baad3; // should be @blue
+// }
+//
+// <div class=jumbotron></div>  // no indication of colors - bad
+//
+// ===============================================
+// Good:
+// ===============================================
+// .jumbotron {
+//   padding: 30px;
+//   margin-bottom: 30px;
+//   // color: #ffffff;
+//   // background-color: #4baad3;
+// }
+//
+// .white {      color: @white; }
+// .bg-blue {    background-color: @blue; }
+//
+// <div class=jumbotron bg-blue white></div>  // obvious colors in markup
+//
+// ===============================================
+
+// Brand   https://kuler.adobe.com/create/color-wheel/
+@brand-primary: #0ABE78;  // changed
+
+// Kuler Scheme
+@brand1:  #0ABE78;  // Blue
+@brand2:  #06794d;  // Teal
+@brand3:  #173340;  // Yellow
+@brand4:  #748E99;  // Orange
+@brand5:  #CC344C;  // Pink
+
+// Cool
+@aqua:    #7FDBFF;
+@blue:    #0074D9;
+@navy:    #001F3F;
+@teal:    #39CCCC;
+@green:   #2ECC40;
+@olive:   #3D9970;
+@lime:    #01FF70;
+
+// Warm
+@yellow:  #FFDC00;
+@orange:  #ec971f;
+@red:     #FF4136;
+@pink:    #FF748A;
+@fuchsia: #F012BE;
+@purple:  #B10DC9;
+@maroon:  #85144B;
+
+// Gray Scale
+@white:   #FFFFFF;
+@silver:  #DDDDDD;
+@gray:    #AAAAAA;
+@black:   #111111;
+
+// Brand
+.brand1 {       color: @brand1; }
+.brand2 {       color: @brand2; }
+.brand3 {       color: @brand3; }
+.brand4 {       color: @brand4; }
+.brand5 {       color: @brand5; }
+
+// Brand Backgrounds
+.bg-brand1 {    background-color: @brand1; }
+.bg-brand2 {    background-color: @brand2; }
+.bg-brand3 {    background-color: @brand3; }
+.bg-brand4 {    background-color: @brand4; }
+.bg-brand5 {   background-color: @brand5; }
+
+// Colors
+.pink {       color: @pink; }
+.navy {       color: @navy; }
+.blue {       color: @blue; }
+.aqua {       color: @aqua; }
+.teal {       color: @teal; }
+.olive {      color: @olive; }
+.green {      color: @green; }
+.lime {       color: @lime; }
+.yellow {     color: @yellow; }
+.orange {     color: @orange; }
+.red {        color: @red; }
+.fuchsia {    color: @fuchsia; }
+.purple {     color: @purple; }
+.maroon {     color: @maroon; }
+.white {      color: @white; }
+.silver {     color: @silver; }
+.gray {       color: @gray; }
+.black {      color: @black; }
+
+// Backgrounds
+.bg-navy {    background-color: @navy; }
+.bg-blue {    background-color: @blue; }
+.bg-aqua {    background-color: @aqua; }
+.bg-teal {    background-color: @teal; }
+.bg-olive {   background-color: @olive; }
+.bg-green {   background-color: @green; }
+.bg-lime {    background-color: @lime; }
+.bg-yellow {  background-color: @yellow; }
+.bg-orange {  background-color: @orange; }
+.bg-red {     background-color: @red; }
+.bg-pink {    background-color: @pink; }
+.bg-fuchsia { background-color: @fuchsia; }
+.bg-purple {  background-color: @purple; }
+.bg-maroon {  background-color: @maroon; }
+.bg-white {   background-color: @white; }
+.bg-gray {    background-color: @gray; }
+.bg-silver {  background-color: @silver; }
+.bg-black {   background-color: @black; }
+
+
+// Basics
+// --------------------------------------------------------
+a {
+  -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+body {
+  padding-top: 50px;
+  //-webkit-font-smoothing: antialiased;
+  font-weight: 300;  // lightweight thin font
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 300;
+}
+
+// Hubspot stuff
+.share-buttons {
+  zoom: 1;
+  max-width: 100%;
+  margin: 3em auto;
+  font-size: 2em;
+}
+.share-buttons:before,
+.share-buttons:after {
+  content: "";
+  display: table;
+}
+.share-buttons:after {
+  clear: both;
+}
+.share-buttons .share-button {
+  width: 100%;
+}
+.share-buttons .share-button iframe {
+  width: 100%;
+  height: 2.45em;
+}
+iframe {
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 0px;
+}
+iframe[seamless]{
+   overflow: hidden;
+}
+
+// How to do gradient color backgrounds
+.gradient-background {
+  background-image: -webkit-linear-gradient(left bottom, rgb(70, 38, 103), rgb(156, 117, 195));
+  background-image: -moz-linear-gradient(left bottom, rgb(70, 38, 103), rgb(156, 117, 195));
+  background-image: -o-linear-gradient(left bottom, rgb(70, 38, 103), rgb(156, 117, 195));
+  background-image: -ms-linear-gradient(left bottom, rgb(70, 38, 103), rgb(156, 117, 195));
+}
+
+
+// Search Header Drop
+// ================================================
+.header-container {
+  height:70px;
+  width:1000px;
+  margin:0 auto 24px
+}
+.search-drop {
+  background:#333;
+  width:100%;
+  position:fixed;
+  height:70px;
+  top:0;
+  z-index:100;
+  -webkit-transition:.3s all ease-in-out;
+  -moz-transition:.3s all ease-in-out;
+  -o-transition:.3s all ease-in-out;
+  transition:.3s all ease-in-out;
+  -webkit-box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  -moz-box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  box-shadow:0 5px 10px rgba(0,0,0,0.1)
+}
+.search-drop.search-hidden {
+  top:-100px;
+  -webkit-box-shadow:0 0 0 rgba(0,0,0,0.2);
+  -moz-box-shadow:0 0 0 rgba(0,0,0,0.2);
+  box-shadow:0 0 0 rgba(0,0,0,0.2)
+}
+.search-close {
+  display:block;
+  float:right;
+  color:#888;
+  text-align:center;
+  font-size:25px;
+  margin:15px 80px 0 0;
+  border:4px solid rgba(255,255,255,0.1);
+  width:34px;
+  height:34px;
+  line-height:34px;
+  cursor:pointer;
+  -webkit-border-radius:40px;
+     -moz-border-radius:40px;
+          border-radius:40px
+}
+.search-close:hover {
+  color:#CCC;
+  background-color:rgba(0,0,0,0.5);
+  border:4px solid #666
+}
+.search-title {
+  font-size:26px;
+  line-height:70px;
+  float:left;
+  margin-left:80px;
+  margin-right:40px;
+  display:inline-block;
+  color:#DDD;
+  font-family:"proxima-nova",sans-serif;
+  font-weight:200
+}
+.search-field {
+  position:relative;
+  height:40px;
+  width:50%;
+  font-size:16px;
+  border:0;
+  margin:15px 0 0;
+  padding:0 20px;
+  outline:0;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  -webkit-border-radius:20px 0 0 20px;
+  -moz-border-radius:20px 0 0 20px;
+  border-radius:20px 0 0 20px;
+  float:left;
+  font:16px open-sans,sans-serif
+}
+.search-submit {
+  border:0;
+  height:40px;
+  line-height:35px;
+  width:50px;
+  margin:15px 0 0;
+  padding:0;
+  -webkit-border-radius:0 20px 20px 0;
+  -moz-border-radius:0 20px 20px 0;
+  border-radius:0 20px 20px 0;
+  float:left;
+  font-size:16px;
+  cursor:pointer
+}
+.search-submit:hover {
+  background-color:#0071cb;
+  color:#FFF
+}
+.search-submit:active {
+  line-height:40px;
+  box-shadow:inset 0 2px 0 #005598
+}
+@media only screen and (min-width:728px) and (max-width:1000px) {
+
+  .search-title {
+    font-size:16px;
+    margin-left:28px
+  }
+
+  .search-field {
+    width:45%
+  }
+
+  .search-close {
+    margin-right:40px
+  }
+}
+
+@media only screen and (min-width:0) and (max-width:727px) {
+.site-nav,.login,.language,.search-title,.search-submit {
+display:none
+}
+
+.header-container {
+height:60px;
+width:100%
+}
+
+.header-container .icon-reorder {
+color:#333;
+font-size:18px
+}
+
+.ifixit-logo {
+display:block;
+float:left;
+margin-top:11px;
+margin-left:11px;
+position:relative
+}
+
+header .action-buttons {
+position:absolute;
+top:0;
+right:0;
+width:auto
+}
+
+header .search-button,header #menu-button {
+display:inline-block;
+float:right;
+font-size:18px;
+height:60px!important;
+line-height:60px!important;
+padding:0 20px
+}
+
+.search-drop {
+width:100%
+}
+
+.search-field {
+position:relative;
+height:40px;
+width:75%;
+font-size:16px;
+border:0;
+margin:15px 0 0 10px;
+padding:0 20px;
+outline:0;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+box-sizing:border-box;
+-webkit-border-radius:20px;
+-moz-border-radius:20px;
+border-radius:20px;
+float:left;
+font:16px open-sans,sans-serif
+}
+
+.search-close {
+float:right;
+margin:14px 10px 0 0
+}
+
+.mobile-nav {
+background:#333;
+overflow:auto;
+padding:0 20px;
+color:#FFF;
+margin:-24px auto 40px;
+padding-bottom:30px;
+text-align:left
+}
+
+.mobile-nav a,.mobile-nav a:visited,.mobile-nav a:hover,.mobile-nav a:active,.mobile-nav .language-item {
+color:#FFF;
+display:block;
+height:40px;
+line-height:40px;
+padding-left:10px
+}
+
+.mobile-nav a img,.mobile-nav a:visited img,.mobile-nav a:hover img,.mobile-nav a:active img,.mobile-nav .language-item img {
+margin-right:10px
+}
+
+.mobile-nav a:hover,.mobile-nav a:visited:hover,.mobile-nav a:hover:hover,.mobile-nav a:active:hover,.mobile-nav .language-item:hover {
+background-color:#111;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px
+}
+
+.mobile-nav a input,.mobile-nav a:visited input,.mobile-nav a:hover input,.mobile-nav a:active input,.mobile-nav .language-item input {
+margin-right:15px
+}
+
+.mobile-nav h4 {
+color:#999;
+font-size:21px;
+font-weight:300;
+padding:20px 0 10px;
+margin:0
+}
+
+.mobile-nav ul {
+margin:0;
+list-style-type:none;
+padding:0
+}
+
+.mobile-nav li {
+font-size:16px
+}
+
+.mobile-nav .reputation {
+padding-left:10px;
+height:40px;
+line-height:40px;
+white-space:nowrap
+}
+
+.mobile-nav .reputation strong {
+color:#6db709
+}
+
+.mobile-nav.expanded {
+display:block;
+height:auto;
+overflow:auto
+}
+}
+
+// Navbar
+// --------------------------------------------------------
+
+// Main Background
+@navbar-inverse-bg:                         @brand-primary;  //
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 15%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-lighter; //@white;//@gray-dark; //
+
+// Hover
+@navbar-inverse-link-hover-color:           @white;
+@navbar-inverse-link-hover-bg:              transparent;
+
+// Active
+@navbar-inverse-link-active-color:          @brand-primary; //@navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             @white; //@white; //darken(@navbar-inverse-bg, 20%); // was 10
+
+// Brand
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          @brand-primary; //white;
+@navbar-inverse-brand-hover-bg:             @white; //transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            @brand-primary;  //darken(@brand-primary, 15%);
+@navbar-inverse-toggle-icon-bar-bg:         @white;
+@navbar-inverse-toggle-border-color:        @white; //darken(@brand-primary, 15%);
+
+
+@navbar-inverse-brand-color:       @white;  //darken(@brand-primary, 15%);
+@navbar-inverse-brand-hover-color: @brand-primary; //@white;
+@navbar-inverse-link-active-bg:    @brand-primary;
+
+// @navbar-inverse-bg:                rgba(0,0,0,0.8);
+
+
+
+
+
+// ===========================================================
+// Basics of a navbar
+@navbar-height:                          70px;
+@navbar-margin-bottom:                   @line-height-computed;
+@navbar-border-radius:                   @border-radius-base;
+@navbar-padding-horizontal:              floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:                ((@navbar-height - @line-height-computed) / 2);
+
+@navbar-default-color:                   @white;          // Text
+@navbar-default-bg:                      @brand-primary;  // Background
+@navbar-default-border:                  darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:              rgba(255,255,255,.50);
+
+@navbar-default-link-hover-color:        rgba(255,255,255,.50); //@white; //@brand-primary;
+@navbar-default-link-hover-bg:           @brand-primary;//@white;
+
+@navbar-default-link-active-color:       @white; //darken(@brand-primary, 10%);
+@navbar-default-link-active-bg:          @brand-primary; //@gray; //darken(@brand-primary, 15%);
+
+@navbar-default-link-disabled-color:     #ccc;
+@navbar-default-link-disabled-bg:        transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:             @white; //@navbar-default-link-color;
+@navbar-default-brand-hover-color:       darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:          transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:         @brand-primary;;
+@navbar-default-toggle-icon-bar-bg:      @white;
+@navbar-default-toggle-border-color:     @white;
+// ============================================================
+
+// White Outline
+// .navbar-nav {
+//     > .active {
+//         // border-bottom: 4px solid transparent;
+//         // border-color: #fff;
+//         //border-radius: @border-radius-base;
+//       }
+//     }
+
+
+// .navbar-default .navbar-nav > .active > a,
+// .navbar-default .navbar-nav > .active > a:hover,
+// .navbar-default .navbar-nav > .active > a:focus {
+//   background: transparent;
+//   color: @white;
+//   border-bottom: 2px solid @white;
+//   height: 42px;
+// }
+
+.navbar-nav > li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.navbar-nav > li > a {
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.50);
+  border: 2px solid transparent;
+  height: 42px;
+}
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: rgba(255,255,255,.50);
+}
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+
+
+
+// Puts a carat under the active navbar item
+// .navbar-nav .active:after {
+//   color: @white;
+//   position: absolute;
+//   bottom: 0;
+//   left: 50%;
+//   display: block;
+//   content: " ";
+//   width: 0;
+//   height: 0;
+//   margin-left: -5px;
+//   vertical-align: middle;
+//   border-right: 10px solid transparent;
+//   border-left: 10px solid transparent;
+//   border-bottom: 10px solid;
+// }
+
+.navbar {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+// remove the border
+.navbar-fixed-top {
+  border-width: 0px;
+}
+
+.navbar-collapse {
+  // border-bottom: 1px solid transparent;
+  // box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+
+.navbar-toggle {
+  border: 2px solid transparent;
+}
+
+// Tweak the brand
+.navbar-brand {
+  font-size: 20px;
+  margin-top: -1px;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  // Prevent Font Awesome icon from increasing height of navbar
+  > .fa {
+    float: left;
+    margin-top: 1px;
+    margin-right: 5px;
+  }
+}
+
+
+// Jumbotron
+// --------------------------------------------------------
+@jumbotron-bg:                   @brand-primary;
+@jumbotron-heading-color:        @white;
+.jumbotron {
+  margin-bottom: 0px;
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    font-weight: 300;
+  }
+  h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: @white;
+    font-size: 50px;
+    font-weight: 300;
+  }
+  p {
+    color: @white;
+  }
+  .btn-lg {
+    margin-top: 10px;
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+  }
+  ul {
+    font-size: 25px;
+    font-weight: 300;
+    color: @white;
+    //list-style-type: none;
+  }
+  li {
+    line-height: 35px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+
+// Inverted outline button (white on dark)
+.btn-outline-inverse {
+  color: @white;
+  background-color: transparent;
+  border-color: #cdbfe3;
+}
+.btn-outline-inverse:hover,
+.btn-outline-inverse:focus,
+.btn-outline-inverse:active {
+  color: #563d7c;
+  text-shadow: none;
+  background-color: @white;
+  border-color: @white;
+}
+
+
+// Hero
+// --------------------------------------------------------
+.hero {
+  overflow: hidden;
+  position: relative;
+  background: url("../img/bg-img.jpg") top center;
+  background-size: cover;
+  height: 700px;
+  .hero-inner {
+    position: relative;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    @media (min-width: @screen-sm-min) {
+      width: @container-sm;
+    }
+    @media (min-width: @screen-md-min) {
+      width: @container-md;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: @container-lg;
+    }
+  }
+  .hero-image {
+    display: block;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+  }
+  .hero-content {
+    display: block;
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 500px;
+    text-align: center;
+    overflow: hidden;
+    text-align: center;
+
+    h2 {
+      margin: 0 0 24px;
+      padding: 0;
+      font-size: 80px;
+      color: @brand-primary; //#fff;
+      font-family: "Lato", sans-serif;
+      letter-spacing: -2px;
+      //text-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+      //text-transform: capitalize;
+    }
+
+      p {
+      font-size: 20px;
+      color: @gray;
+      margin-bottom: 20px;
+    }
+
+  }
+}
+
+// Internal Anchors (must account for fixed header)
+// --------------------------------------------------------
+.anchor {
+  display: block;
+  height: 50px;       // same height as header
+  margin-top: -50px;  // same height as header
+  // visibility: hidden;  // using Bootstrap .invisible class
+}
+
+// Marketing
+// --------------------------------------------------------
+.marketing {
+  margin-bottom: 70px;
+  h1 {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 34px;
+    //font-family: "Lato", sans-serif;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+
+// Make Buttons Square
+// --------------------------------------------------------
+.btn {
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  border: 0px;
+}
+@btn-primary-color:              #fff;
+@btn-primary-bg:                 darken(@brand-primary, 20%);  //@brand-primary;
+@btn-primary-border:             @brand-primary; // darken(@btn-primary-bg, 5%);
+
+
+// Featurettes
+// --------------------------------------------------------
+.featurette {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  h1 {
+    margin-top: 30px;
+    font-size: 50px;
+    letter-spacing: -2px;
+    font-weight: 300;
+  }
+}
+
+// footer style
+// --------------------------------------------------------
+.footer {
+  //clear: both;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  background-color: @gray-dark;
+  h4 {
+    color: darken(@brand-primary, 15%);
+    margin-left: 5px;
+    font-size: 24px;
+    width: 185px;
+    //text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: 14px;
+    color: darken(@gray-light, 15%);
+    //text-align: center;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    a {
+      text-decoration: none;
+      color: @gray-light;
+      // border-bottom: 1px dotted @gray-light;
+      &:hover {
+        color: @gray-lighter;
+      }
+    }
+  }
+  li {
+    list-style: none;
+    //margin-left: 20px;
+    font-size: 22px;
+    text-align: left;
+    color: @gray-light;
+    a {
+      text-decoration: none;
+      color: @gray-light;
+      &:hover {
+        color: @gray-lighter;
+      }
+    }
+    i {
+    color: @brand-primary;
+    }
+  }
+}
+
+
+// Animation
+// --------------------------------------------------------
+// https://daneden.me/animate/build/
+.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes slideInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+  } 100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes slideInRight {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(2000px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@-o-keyframes slideInRight {
+  0% {
+    opacity: 0;
+    -o-transform: translateX(2000px);
+  }
+  100% {
+    -o-transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  -moz-animation-name: slideInRight;
+  -o-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
+
+// Media/Responsiveness
+// --------------------------------------------------------
+@media (max-width: 480px) {
+  .hero {
+    height: 230px;
+    .content {
+      width: 175px;
+      h2 {
+        font-size: 30px;
+        margin: 0 0 14px;
+      }
+      p {
+      font-size: 13px;
+      font-weight: 500;
+      }
+    }
+  }
+  .jumbotron {
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      small {
+        color:#fff;
+      }
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .featurette {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    h1 {
+      margin-top: 20px;
+      font-size: 26px;
+      letter-spacing: -1px;
+    }
+  }
+  hr {
+    margin: 0px;
+  }
+}
+@media (max-width: 992px) {
+    .hero {
+    height: 500px;
+    .content {
+      width: 300px;
+      h2 {
+        font-size: 44px;
+        margin: 0 0 14px;
+      }
+      p {
+      font-size: 18px;
+      font-weight: 500;
+      }
+    }
+  }
+  .featurette {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    h1 {
+      margin-top: 20px;
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+  }
+  .lead {
+    font-size: 16px;
+  }
+  hr {
+    margin: 15px;
+  }
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1170px) {
+}

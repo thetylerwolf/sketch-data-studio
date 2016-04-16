@@ -1,0 +1,37 @@
+{
+  "name": "totop.js",
+  "main": [
+    "./totop.js",
+    "./totop.min.js"
+  ],
+  "version": "0.0.4",
+  "homepage": "https://github.com/dstroot/totop.js",
+  "authors": [
+    "Dan Stroot <dan.stroot@gmail.com>"
+  ],
+  "description": "Scroll your page to the top",
+  "keywords": [
+    "scroll",
+    "top"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.4",
+    "commit": "2edd04ae511c2092536d863d06e71853bbb350e3"
+  },
+  "_source": "git://github.com/dstroot/totop.js.git",
+  "_target": "~0.0.4",
+  "_originalSource": "totop.js"
+}

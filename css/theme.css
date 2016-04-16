@@ -1,0 +1,313 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxvR_54zmj3SbGZQh3vCOwvY.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBrrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxhbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+}
+
+/*
+    UIkit overrides
+*/
+
+.uk-navbar { background: none; }
+
+.uk-navbar-nav > li > a {
+    font-size: 14px;
+    color: #999;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+}
+
+.uk-navbar-nav > li > a:hover { background: none; }
+.uk-navbar-nav > li.uk-active > a { background: #fff; }
+
+.uk-navbar-brand {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.uk-subnav > li > a { text-decoration: none; }
+
+.uk-button,
+.uk-alert,
+.uk-badge,
+.uk-panel-box,
+.uk-tooltip,
+.uk-dropdown,
+.uk-thumbnail,
+.uk-modal-dialog,
+.uk-form select,
+.uk-form textarea,
+.uk-form input[type="text"],
+.uk-form input[type="password"],
+.uk-form input[type="datetime"],
+.uk-form input[type="datetime-local"],
+.uk-form input[type="date"],
+.uk-form input[type="month"],
+.uk-form input[type="time"],
+.uk-form input[type="week"],
+.uk-form input[type="number"],
+.uk-form input[type="email"],
+.uk-form input[type="url"],
+.uk-form input[type="search"],
+.uk-form input[type="tel"],
+.uk-form input[type="color"] {
+    border-radius: 3px;
+}
+
+.uk-button {
+    min-height: 50px;
+    padding: 0 28px;
+    line-height: 50px;
+    font-size: 18px;
+    background: none;
+    color: #444;
+    border: 1px #444 solid;
+}
+
+.uk-button-small {
+    min-height: 30px;
+    padding: 0 14px;
+    line-height: 30px;
+    font-size: 12px;
+    background: none;
+    border-radius: 2px;
+}
+
+.uk-button:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.uk-button:active, .uk-button.uk-active {
+    background-color: #222;
+    color: #fff;
+}
+
+.uk-button.uk-button-large {
+    min-height: 45px;
+    padding: 0 35px;
+    line-height: 45px;
+    font-size: 18px;
+}
+
+.uk-alert { font-size: 90%; }
+
+.uk-text-xlarge {
+    font-size: 26px;
+    line-height: 36px;
+}
+
+.uk-text-2xlarge {
+    font-size: 46px;
+    line-height: 54px;
+}
+
+.uk-margin-large-top {
+    margin-top: 40px;
+}
+
+.uk-margin-large-bottom {
+    margin-top: 40px;
+}
+
+.uk-panel-box {
+    border: 1px #e0ddcf solid;
+    background: none;
+}
+
+/*
+    Theme CSS
+*/
+
+body {
+    background: #222;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    font-weight: 300;
+}
+
+pre {
+    background: #222;
+    color: #999;
+    border-radius: 3px;
+}
+
+h1,h2,h3,h4,h5,h6, strong, b {
+    font-weight: 700;
+}
+
+h1 span {
+    font-weight: 300;
+}
+
+a { color: #72bdfd; }
+
+hr.content-spacer {
+    width:50%;
+    margin:30px auto;
+}
+
+.site-header {
+    background: #fff;
+    padding: 20px 0;
+    border-bottom: 1px #e5e5e5 solid;
+    min-height: 300px;
+    position: relative;
+    overflow:hidden;
+}
+
+.site-header .uk-container {
+    position: relative;
+    z-index: 1;
+}
+
+.site-header canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.site-main {
+    background: #f4f3ee;
+    min-height: 350px;
+}
+
+.site-footer {
+    color: #666;
+    padding: 40px 0;
+}
+
+.site-footer strong, .site-footer a, .site-footer a:hover {
+    color: #fff;
+}
+
+.site-nav-main {
+    margin-top: 10px;
+    background: rgba(200,200,200,0.4);
+}
+
+.site-nav-main .uk-navbar-brand span {
+    color: #ccc;
+    font-weight: 300;
+}
+
+.site-nav-main  ul > li.uk-active > a {
+    font-weight: 700;
+}
+
+.site-nav-main .nav-secondary a {
+    color: #000;
+}
+
+.site-nav-main .nav-secondary a:hover {
+    color: #9bccef;
+}
+
+.site-nav-main .uk-button {
+    min-height: 30px;
+    padding: 0 14px;
+    line-height: 30px;
+    font-size: 12px;
+    background: none;
+    color: #b8b191;
+    border: 1px #e0ddcf solid;
+    border-radius: 2px;
+}
+
+.site-nav-main .uk-button:hover {
+    color: green;
+    border: 1px green solid;
+}
+
+.site-content-box {
+    padding: 40px 0;
+}
+
+.site-content-box-alternative {
+    background: #fff;
+}
+
+.site-content-box-pump {
+    padding-bottom: 100px;
+}
+
+.site-teaser {
+  margin-bottom: -40px;
+}
+
+.profile-thumb {
+    display: inline-block;
+    border-radius: 50%;
+    border: 10px #fafafa solid;
+    background: rgba(0, 0, 0, 0) url(../img/artur.png) no-repeat;
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+}
+
+.cp-logo {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff url(../img/cp.logo.png) 50% 50% no-repeat;
+    background-size: 80px 80px;
+    border: 10px #fff solid;
+    margin-top: -105px;
+    z-index: 2;
+}
+
+.agentejo-logo {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #000 url(../img/agentejo.png) 50% 50% no-repeat;
+    background-size: 120px 120px;
+    border: 10px #fff solid;
+    margin-top: -100px;
+}
+
+.site-links-soft a {
+  color: #756e4c !important;
+}
+.site-links-soft a:hover {
+  color: #2d2b1d !important;
+}
+
+.front-page-features i[class*='uk-icon-']{
+    font-size: 40px;
+    margin: 15px 0;
+}
