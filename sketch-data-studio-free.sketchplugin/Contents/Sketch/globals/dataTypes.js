@@ -69,8 +69,6 @@ var dataTypes = {
             var fileTypes = ['csv', 'CSV'];
             [panel setAllowedFileTypes:fileTypes];
 
-            [panel setDirectoryURL: [NSURL fileURLWithPath: '/Users/' + NSUserName()]];
-
             var pressedButton = [panel runModal];
             if(pressedButton == NSOKButton) {
                 return [[panel URL] path];
