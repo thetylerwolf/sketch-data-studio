@@ -26,11 +26,16 @@ if(dt == 'fromCSV') {
 
 }
 //If we're using artboards, add to the current artboard
+group = [MSLayerGroup new];
+
+//If we're using artboards, add to the current artboard
 if(doc.currentPage().artboards().count() > 0) {
   var currentArtboard = doc.currentPage().currentArtboard();
-  group = currentArtboard.addLayerOfType('group');
+  // group = currentArtboard.addLayerOfType('group');
+
+  currentArtboard.addLayers([group]);
 } else {
-  group = doc.currentPage().addLayerOfType('group');
+  doc.currentPage().addLayers([group]);
 }
 
 group.setName('columns');
@@ -38,14 +43,16 @@ group.setName('columns');
 if(dt !== 'fromCSV') {
 
     for(i=cols; i>0; i--) {
-        textLayer = group.addLayerOfType('text');
+        textLayer = [MSTextLayer new];
+        group.addLayers([textLayer]);
         genRows(rows, textLayer, i, dt);
     }
 
 } else {
 
     for(i=0; i<cols; i++) {
-        textLayer = group.addLayerOfType('text');
+        textLayer = [MSTextLayer new];
+        group.addLayers([textLayer]);
         resultStr = values[i].join('\n');
         textLayer.setStringValue(resultStr);
         textLayer.adjustFrameToFit();

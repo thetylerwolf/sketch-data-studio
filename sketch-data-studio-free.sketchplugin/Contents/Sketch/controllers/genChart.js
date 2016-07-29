@@ -13,12 +13,16 @@ if(input.result == 1001) return;
 points = Math.abs(input.points.intValue()) || 1;
 seriez = Math.abs(input.items.intValue()) || 1;
 
+group = [MSLayerGroup new];
+
 //If we're using artboards, add to the current artboard
 if(doc.currentPage().artboards().count() > 0) {
   var currentArtboard = doc.currentPage().currentArtboard();
-  group = currentArtboard.addLayerOfType('group');
+  // group = currentArtboard.addLayerOfType('group');
+
+  currentArtboard.addLayers([group]);
 } else {
-  group = doc.currentPage().addLayerOfType('group');
+  doc.currentPage().addLayers([group]);
 }
 
 group.setName('chart');
@@ -33,8 +37,9 @@ if(/bar|Bar/.test(dt)) {
 
 
 for(i=seriez; i>0; i--) {
-    var seriesGroup = group.addLayerOfType('group');
-    
+    var seriesGroup = [MSLayerGroup new];
+    group.addLayers([seriesGroup]);
+
     seriesGroup.setName('series');
 
     seriesArray = genSeries(points, i, dt);
