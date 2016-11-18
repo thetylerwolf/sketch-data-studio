@@ -8,6 +8,8 @@ A Sketch plugin to upload or generate numerical and qualitative data for charts 
 
 ![Screenshot](/../screenshots/screenshots/screenshot_dashboard.png?raw=true)
 
+##Compatibility - Sketch v41 and later only!
+
 ##How to use
 Enter number of columns, followed by number of rows or number of charts (comma seperated) and you're done.
 

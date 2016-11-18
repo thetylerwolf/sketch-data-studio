@@ -49,7 +49,7 @@ var chartTypes = {
 
             var idx = index % chartColors.length;
             var iColor = chartColors[idx];
-            border.color = MSColor.colorWithSVGString(iColor);
+            border.color = MSImmutableColor.colorWithSVGString(iColor);
             border.thickness = 2;
 
             group.addLayers([shape]);
@@ -95,7 +95,7 @@ var chartTypes = {
 
                 var idx = index % chartColors.length;
                 var iColor = chartColors[idx];
-                rectFill.color = MSColor.colorWithSVGString(iColor);
+                rectFill.color = MSImmutableColor.colorWithSVGString(iColor);
 
                 rect.frame().constrainProportions = false;
 
