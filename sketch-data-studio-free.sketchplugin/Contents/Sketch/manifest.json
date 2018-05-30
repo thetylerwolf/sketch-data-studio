@@ -41,7 +41,7 @@
     {
       "name": "Random Stock Symbols",
       "identifier": "randStockSymbol",
-      "script": "genTables/randSymbol.js",
+      "script": "genTables/randSymbol.js"
     },{
       "name": "Random Stocks",
       "identifier": "randStock",
